@@ -8,7 +8,6 @@
   --mint:#80f0a3;
   --blue:#8fb7ff;
   --cream:#fffdf5;
-  --panel:#fffdf5;
   --shadow: 8px 8px 0 var(--ink);
   --radius: 26px;
 }
@@ -27,8 +26,8 @@ a{color:inherit;text-decoration:none}
   pointer-events:none;
   position:fixed;
   inset:0;
-  opacity:.11;
-  z-index:0;
+  opacity:.22;
+  z-index:100;
   background-image:radial-gradient(#000 1px, transparent 1px);
   background-size:22px 22px;
   mix-blend-mode:multiply;
@@ -43,7 +42,7 @@ a{color:inherit;text-decoration:none}
   gap:20px;
   padding:16px 28px;
   border-bottom:2px solid var(--ink);
-  background:var(--panel);
+  background:rgba(251,246,234,.9);
   backdrop-filter: blur(14px);
 }
 .logo{font-weight:800;letter-spacing:-.05em;font-size:22px}
@@ -109,183 +108,44 @@ h4{font-size:24px;letter-spacing:-.035em;margin-bottom:8px}
 @media (max-width:900px){.hero,.about-section{grid-template-columns:1fr}.hero{padding-top:46px}.hero-card{transform:none}.project-intro{flex-direction:column}.project-links{justify-content:flex-start}.two-col,.three-col,.mini-process,.image-gallery.three,.image-gallery.two,.insight-grid{grid-template-columns:1fr}.site-header{align-items:flex-start;flex-direction:column}nav{justify-content:flex-start}.wide-shot{aspect-ratio:auto}h1{font-size:58px}}
 @media (max-width:520px){.section-wrap{width:min(100% - 22px, 1180px)}.site-header{padding:14px}.project{padding:16px;box-shadow:5px 5px 0 var(--ink)}nav a{font-size:12px;padding:8px 10px}h1{font-size:48px}.hero-card p{font-size:28px}footer{flex-direction:column;align-items:flex-start}}
 
-
-/* Opaque text panels: keeps the funky background from clashing with readable content */
-main, .site-header, footer{position:relative;z-index:1}
-.hero-copy,
-.section-heading,
-.project-intro > div:first-child,
-.about-copy,
-.project-label,
-figcaption{
-  background:var(--panel);
-  border:2px solid var(--ink);
-  border-radius:20px;
-  box-shadow:4px 4px 0 var(--ink);
+/* Project labels added for clearer separation */
+.project{
+  position:relative;
+  margin-top:34px;
 }
-.hero-copy{padding:24px;max-width:850px}
-.section-heading{padding:28px;margin:80px 0 26px}
-.project-intro > div:first-child{padding:22px}
 .project-label{
-  display:inline-block;
+  position:absolute;
+  top:-22px;
+  left:22px;
+  display:inline-flex;
+  align-items:center;
   width:max-content;
-  max-width:100%;
-  padding:9px 14px;
-  margin:-48px 0 18px 10px;
-  font-size:13px;
-  font-weight:900;
-  text-transform:uppercase;
-  letter-spacing:.12em;
-  background:var(--mint);
-}
-figcaption{display:inline-block;padding:7px 10px;margin-top:12px;color:var(--ink)}
-.case-block{background:var(--panel);border:2px solid var(--ink);border-radius:22px;padding:24px;box-shadow:5px 5px 0 var(--ink)}
-.case-block.problem{background:var(--blue)}
-.mini-process div,.stats div,.insight-grid div,.note-card,.chips span,.pill-list span,nav a,.button,.project-links a,.contact-card a{background:var(--panel)}
-.note-card.lavender{background:var(--lav)}
-.note-card.mint,.stats div{background:var(--mint)}
-
-/* Click-to-expand images */
-.wide-shot,.image-gallery img{cursor:zoom-in;transition:transform .15s ease, box-shadow .15s ease, filter .15s ease}
-.wide-shot:hover,.image-gallery img:hover{transform:translate(2px,2px);box-shadow:2px 2px 0 var(--ink);filter:saturate(1.08)}
-.wide-shot:focus,.image-gallery img:focus{outline:4px solid var(--hot);outline-offset:5px}
-body.modal-open{overflow:hidden}
-.image-modal{
-  position:fixed;
-  inset:0;
-  z-index:999;
-  display:none;
-  place-items:center;
-  padding:64px 24px 32px;
-  background:rgba(23,23,23,.86);
-}
-.image-modal.is-open{display:grid}
-.modal-image{
-  max-width:min(96vw,1280px);
-  max-height:82vh;
-  object-fit:contain;
-  border:3px solid var(--ink);
-  border-radius:20px;
-  background:var(--panel);
-  box-shadow:8px 8px 0 var(--hot);
-  cursor:zoom-out;
-}
-.modal-caption{
-  max-width:min(92vw,900px);
-  margin:18px 0 0;
-  padding:10px 14px;
-  background:var(--panel);
+  max-width:calc(100% - 44px);
   border:2px solid var(--ink);
   border-radius:999px;
-  font-size:14px;
-  font-weight:800;
-  text-align:center;
-}
-.modal-close{
-  position:fixed;
-  top:18px;
-  right:22px;
-  width:46px;
-  height:46px;
-  border:2px solid var(--ink);
-  border-radius:999px;
-  background:var(--mint);
+  padding:9px 16px;
+  background:var(--hot);
+  color:white;
   box-shadow:4px 4px 0 var(--ink);
-  color:var(--ink);
-  font-size:32px;
-  line-height:1;
+  font-size:14px;
   font-weight:900;
-  cursor:pointer;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  z-index:3;
 }
-.modal-close:hover{transform:translate(2px,2px);box-shadow:1px 1px 0 var(--ink)}
-
-@media (max-width:900px){
-  .hero-copy{padding:18px}
-  .section-heading{margin-top:52px}
-  .project-label{margin:-34px 0 16px 0}
-  .image-modal{padding:78px 12px 24px}
+.compact-project .project-label{background:var(--mint);color:var(--ink)}
+.fastpark .project-label{background:var(--blue);color:var(--ink)}
+.migration-shot{
+  aspect-ratio:16/7;
+  object-position:top;
+  margin-top:8px;
 }
-
-/* Reliable clickable image wrappers: if JavaScript fails, images still open in a new tab. */
-.image-zoom{display:block;color:inherit;text-decoration:none;cursor:zoom-in}
-.image-zoom img{display:block}
-.wide-zoom{margin-bottom:24px}
-.wide-zoom .wide-shot{margin-bottom:0}
-.image-zoom:focus{outline:4px solid var(--hot);outline-offset:7px;border-radius:18px}
-
-/* Extra readability: solid surfaces for text-heavy areas. */
-.hero-copy,.hero-card,.project-intro,.case-block,.about-copy,.section-heading{
-  background:rgba(255,250,240,.96);
-  border-radius:22px;
-}
-.hero-copy,.section-heading{padding:12px}
-.project-intro{padding:18px;border:2px solid var(--ink)}
-.about-copy{padding:22px;border:2px solid var(--ink);box-shadow:5px 5px 0 var(--ink)}
-
-/* Opaque text areas only — no layout/functionality changes */
-
-/* Make sticky header fully opaque */
-.site-header{
-  background:var(--cream);
-  backdrop-filter:none;
-}
-
-/* Hero text readability */
-.hero-copy{
-  background:var(--cream);
-  border-radius:22px;
-  padding:18px;
-}
-
-/* Project intro text readability */
-.project-intro > div:first-child{
-  background:var(--cream);
-  border-radius:18px;
-  padding:18px;
-}
-
-/* Keep AIxDesign migration intro readable on lavender card */
-.compact-project .project-intro > div:first-child{
-  background:var(--cream);
-}
-
-/* Case study text blocks readability */
-.case-block{
-  background:var(--cream);
-  border-radius:18px;
-  padding:24px;
-}
-
-/* Preserve the blue problem block, but keep it fully solid */
-.case-block.problem{
-  background:var(--blue);
-}
-
-/* Research insight cards already had a background, make them cream instead of semi blending */
-.insight-grid div,
-.mini-process div,
-.stats div{
-  background:var(--cream);
-}
-
-/* About section text readability */
-.about-section > div,
-.about-copy{
-  background:var(--cream);
-  border-radius:22px;
-  padding:22px;
-}
-
-/* Captions under images */
-figcaption{
-  display:inline-block;
-  background:var(--cream);
-  border-radius:999px;
-  padding:5px 10px;
-}
-
-/* Keep chips/pills fully opaque */
-.chips span,
-.pill-list span{
-  background:var(--cream);
+@media (max-width:520px){
+  .project-label{
+    left:12px;
+    top:-19px;
+    font-size:11px;
+    padding:8px 11px;
+    letter-spacing:.06em;
+  }
 }
