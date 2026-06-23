@@ -221,3 +221,71 @@ body.modal-open{overflow:hidden}
 .hero-copy,.section-heading{padding:12px}
 .project-intro{padding:18px;border:2px solid var(--ink)}
 .about-copy{padding:22px;border:2px solid var(--ink);box-shadow:5px 5px 0 var(--ink)}
+
+/* Opaque text areas only — no layout/functionality changes */
+
+/* Make sticky header fully opaque */
+.site-header{
+  background:var(--cream);
+  backdrop-filter:none;
+}
+
+/* Hero text readability */
+.hero-copy{
+  background:var(--cream);
+  border-radius:22px;
+  padding:18px;
+}
+
+/* Project intro text readability */
+.project-intro > div:first-child{
+  background:var(--cream);
+  border-radius:18px;
+  padding:18px;
+}
+
+/* Keep AIxDesign migration intro readable on lavender card */
+.compact-project .project-intro > div:first-child{
+  background:var(--cream);
+}
+
+/* Case study text blocks readability */
+.case-block{
+  background:var(--cream);
+  border-radius:18px;
+  padding:24px;
+}
+
+/* Preserve the blue problem block, but keep it fully solid */
+.case-block.problem{
+  background:var(--blue);
+}
+
+/* Research insight cards already had a background, make them cream instead of semi blending */
+.insight-grid div,
+.mini-process div,
+.stats div{
+  background:var(--cream);
+}
+
+/* About section text readability */
+.about-section > div,
+.about-copy{
+  background:var(--cream);
+  border-radius:22px;
+  padding:22px;
+}
+
+/* Captions under images */
+figcaption{
+  display:inline-block;
+  background:var(--cream);
+  border-radius:999px;
+  padding:5px 10px;
+}
+
+/* Keep chips/pills fully opaque */
+.chips span,
+.pill-list span{
+  background:var(--cream);
+}
